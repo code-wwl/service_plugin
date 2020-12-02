@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:///Users/wwl/Desktop/plugin")
+        pom.groupId = "com.humble.plugin"
+        pom.artifactId = "spi"
+        pom.version = "1.0.0" }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:3.6.3'
+    implementation 'com.github.code-wwl:service_annotation:1.0.0'
+    implementation group: 'org.javassist', name: 'javassist', version: '3.22.0-GA'
+}
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
